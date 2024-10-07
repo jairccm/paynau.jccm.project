@@ -27,8 +27,8 @@ El proyecto sigue una arquitectura limpia con separación de capas, entre ellas:
 Clona este repositorio en tu máquina local:
 
 ```bash
-git clone https://github.com/tu-usuario/paynausjccmprojectapi.git
-cd paynausjccmprojectapi
+git clone https://github.com/jairccm/paynau.jccm.project.git
+cd paynau.jccm.project
 ```
 
 ### 2. Ejecutar la Aplicación con Docker Compose
