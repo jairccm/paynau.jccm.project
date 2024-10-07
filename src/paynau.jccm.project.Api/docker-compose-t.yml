@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mysql
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - >-
+        ConnectionStrings__ConexionMySql=server=mysql;user=root;password=Admin2024;database=paynau_db;
+    networks:
+      - app-network
+  mysql:
+    image: 'mysql:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: Admin2024
+      MYSQL_DATABASE: paynau_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Admin2024
+    ports:
+      - '3306:3306'
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  paynau.jccm.project.api:
+    image: ${DOCKER_REGISTRY-}paynaujccmprojectapi
+    build:
+      context: .
+      dockerfile: src/paynau.jccm.project.Api/Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mysql
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - >-
+        ConnectionStrings__ConexionMySql=server=mysql;user=root;password=Admin2024;database=paynau_db;
+    networks:
+      - app-network
+  mysql:
+    image: 'mysql:8.4'
+    container_name: mysql-server-v1
+    environment:
+      - MYSQL_ROOT_PASSWORD=Admin2024
+    ports:
+      - '3306:3306'
+    networks:
+      - app-network
+    volumes:
+      - mysql_data:/var/lib/mysql
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

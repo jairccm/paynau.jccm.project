@@ -1,0 +1,6 @@
+@paynau.jccm.project.Api_HostAddress = http://localhost:5028
+
+GET {{paynau.jccm.project.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
